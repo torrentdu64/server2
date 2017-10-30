@@ -6,6 +6,12 @@ const keys = require('../config/keys');
 
 const User = mongoose.model('users');
 
+
+passport.serializeUser( (user , done) => {
+  done(null, user.id);
+
+});
+
 passport.use(new GoogleStrategy({
   clientID: keys.googleClientID,
   clientSecret: keys.googleClientSecret,
