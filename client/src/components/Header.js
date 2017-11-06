@@ -6,11 +6,11 @@ class Header extends Component {
   renderContent(){
     switch(this.props.auth){
       case null:
-        return 'pendding';
+        return ;
       case false:
-        return 'bye bye';
+        return <li><a href="/auth/google" >Login GooGle</a></li>;
       default:
-        return 'i am logg in';
+        return <li><a  >Log out</a></li>;
     }
   }
 
@@ -35,4 +35,4 @@ function mapStateToProps({auth}){
 }
 
 
-export default connect()(Header);
+export default connect(mapStateToProps)(Header);
