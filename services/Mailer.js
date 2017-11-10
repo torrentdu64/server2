@@ -6,3 +6,6 @@ const keys = require('../config/keys');
 class Mailer exports helper.Mail {
 
 }
+
+
+module.exports = Mailer;
