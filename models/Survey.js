@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { Schema } = mongoogse;
+const { Schema } = mongoose;
 const RecipientSchema = require('./Recipient');
 
 
