@@ -3,13 +3,14 @@ import React, { Component} from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { Link } from 'react-router-dom';
 import SurveyField from './SurveyField';
+import validateEmail from '../../utils/validateEmail';
 
 
 
 const FIELDS = [
 {label:"survey title " , name:"title" },
 { label:"subject title ", name:"subject "},
-{ label:"email body ", name:"email" },
+{ label:"email body ", name:"body" },
 { label:"email list " , name:"emails" }
 ];
 
@@ -44,9 +45,15 @@ class SurveyForm extends Component {
 function validate(values){
   const errors = {};
 
-  if(!values.title){
-    errors.title = 'entrer un titre !!';
-  }
+  errors.emails = validateEmail(values.emails || '');
+
+  _.each(FIELDS, ({name}) => {
+      if(!values[name]){
+        errors[name] = 'votre contenue est vide '
+      }
+  });
+
+
 
   return errors;
 
